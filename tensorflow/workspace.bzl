@@ -219,6 +219,7 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
       actual = "@protobuf//:protoc_lib",
   )
 
+  '''
   native.new_http_archive(
       name = "grpc",
       urls = [
@@ -228,6 +229,12 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
       sha256 = "a15f352436ab92c521b1ac11e729e155ace38d0856380cf25048c5d1d9ba8e31",
       strip_prefix = "grpc-d7ff4ff40071d2b486a052183e3e9f9382afb745",
       build_file = str(Label("//:grpc.BUILD")),
+  )
+  '''
+  native.git_repository(
+    name = "grpc",
+    commit = "ef35bc33bdf7cc40ad3ef1fd254b3959ddd9fe6d",
+    remote = "https://github.com/sreecha/grpc.git",
   )
 
   # protobuf expects //external:grpc_cpp_plugin to point to grpc's
